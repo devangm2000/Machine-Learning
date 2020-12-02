@@ -59,6 +59,13 @@ from sklearn.compose import ColumnTransformer
 ct = ColumnTransformer([('one_hot_encoder', OneHotEncoder(), [0,4,5,9])],remainder='passthrough')
 X= np.array(ct.fit_transform(X), dtype=np.float)
 
+#endoding categorical data
+from sklearn.preprocessing import LabelEncoder,OneHotEncoder
+le_train1 = LabelEncoder()
+le_train2 = LabelEncoder()
+X_train[:,2] = le_train1.fit_transform(X_train[:,2])
+X_train[:,3] = le_train2.fit_transform(X_train[:,3])
+
 #Avoiding the dummy variable trap
 X=X[:,[0,1,3,4,5,6,8,9,11,12,13,15,16,17,18,19,20,21,22,23,24,25,26,27]]
 
